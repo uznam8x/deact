@@ -1,0 +1,45 @@
+{
+  "routes": [
+    {
+      "path": "moacharts",
+      "view": "11:10"
+    },
+    {
+      "path": "new-product",
+      "view": "11:12"
+    }
+  ],
+  "views": {
+    "11:10": [
+      {
+        "tagName": "div",
+        "classList": [
+          "container"
+        ],
+        "attributes": {
+          "data": "1"
+        },
+        "children": []
+      },
+      {
+        "tagName": "Card",
+        "classList": [],
+        "attributes": {},
+        "children": []
+      },
+      {
+        "tagName": "Button",
+        "classList": [],
+        "attributes": {
+          "color": "primary"
+        },
+        "children": []
+      }
+    ],
+    "11:12": [
+      {
+        "children": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+src
+node_modules
+.env
+tsconfig.json
+public
+figml.config.jsonparse
+figon.json
+build

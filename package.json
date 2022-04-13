@@ -1,0 +1,18 @@
+{
+  "name": "deact",
+  "author": {
+    "email": "uznam8x@gmail.com",
+    "name": "uznam8x"
+  },
+  "private": true,
+  "scripts": {
+    "figon": "yarn workspace figon",
+    "figml": "yarn workspace figml"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "lerna": "^4.0.0"   
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "resources": {
+    "Card": {
+      "script": ["/assets/card.js"]
+    },
+    "Button": {
+      "script": ["/assets/button.js"]
+    }
+  }
+}
