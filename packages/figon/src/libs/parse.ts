@@ -16,6 +16,7 @@ function selector(syntax: string) {
   const regex =
     /^(?<tagName>[\*|\w|\-]+)?(?<id>#[\w|\-]+)?(?<className>\.[\w|\-|\.]+)*(?<data>\[.+\])*$/;
   const matched = syntax.match(regex);
+  
   if (!!matched) {
     const { groups } = matched;
     const { tagName, id, className = "", data = "" } = groups as any;
@@ -26,6 +27,8 @@ function selector(syntax: string) {
       attributes: attributes(data),
     };
   }
+
+  
   return {};
 }
 

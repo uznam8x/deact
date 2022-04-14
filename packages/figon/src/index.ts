@@ -1,27 +1,27 @@
-#!/usr/bin/env node
+import storage from "./libs/storage";
+import scaffold from "./libs/scaffold";
+import axios from "axios";
 
-import compile from "./libs/compile";
-import * as mkdirp from "mkdirp";
-import { program } from "commander";
-import * as fs from "fs-extra";
-import * as path from "path";
-
-program.option("-o, --output <path>", "Output path");
-program.option("-t, --token <path>", "Figma token");
-program.option("-f, --file <path>", "Figma file id");
-program.parse();
-
-const args = { output: "figon.json", ...program.opts() };
-
-function stream(res: any) {
-  const dist = path.resolve(process.cwd(), args.output);
-  mkdirp.sync(path.dirname(dist));
-  fs.writeFileSync(dist, JSON.stringify(res, null, 2));
+const fetch = axios.create();
+function run(res: any) {
+  const { document, components } = res.data as any;
+  storage.setItem("components", components);
+  return scaffold(document);
 }
 
-const { token, file } = args as any;
-if (!!token && !!file) {
-  compile(token, file).then(stream);
-} else {
-  throw new Error("A Figma token and file are required")
+function start(token: string, file: string) {
+  if (!!token && !!file) {
+    return fetch({
+      baseURL: "https://api.figma.com",
+      url: `/v1/files/${file}`,
+      method: "get",
+      headers: {
+        "X-Figma-Token": token!,
+      },
+    }).then(run);
+  } else {
+    throw new Error("A FigmaToken and FigmaFile are required");
+  }
 }
+
+export default start;

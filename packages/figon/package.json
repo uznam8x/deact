@@ -6,19 +6,20 @@
   "author": "uznam8x <uznam8x@gmail.com>",
   "license": "MIT",
   "bin": {
-    "figon": "./dist/index.js"
+    "figon": "./dist/bin.js"
   },
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "start": "tsc-watch src/index.ts --outDir ./dist --onSuccess \"node dist/index.js",
-    "build": "rm -rf dist && tsc src/index.ts --declaration --outDir dist",
+    "start": "tsc-watch src/bin.ts --outDir ./dist --onSuccess \"node dist/bin.js\"",
+    "build": "rm -rf dist && tsc src/bin.ts --declaration --outDir dist",
     "compile": "node dist/index.js"
   },
   "dependencies": {
     "axios": "^0.26.1",
     "commander": "^9.1.0",
+    "dotenv": "^16.0.0",
     "fs-extra": "^10.0.1",
     "mkdirp": "^1.0.4",
     "ramda": "^0.28.0",
